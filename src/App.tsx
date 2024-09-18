@@ -1,12 +1,13 @@
-import { Button } from '@mui/material';
-import { Header, MainContainer } from './components';
+import { CssBaseline } from '@mui/material';
+import { Converter, Header, MainContainer } from './components';
 
 function App() {
   return (
     <>
+      <CssBaseline />
       <Header />
       <MainContainer>
-        <Button color="secondary">6</Button>
+        <Converter />
       </MainContainer>
     </>
   );
