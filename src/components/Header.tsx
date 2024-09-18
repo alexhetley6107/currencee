@@ -2,12 +2,12 @@ import { AppBar, Container, Stack, Toolbar, Typography } from '@mui/material';
 import { FC } from 'react';
 
 type HeaderProps = {
-  loading?: boolean;
+  isLoading?: boolean;
 };
 
 export const Header: FC<HeaderProps> = () => {
   return (
-    <AppBar position="fixed" variant="outlined" color="secondary">
+    <AppBar position="fixed" color="secondary">
       <Container>
         <Toolbar variant="dense">
           <Typography variant="h5">CURRENCEE</Typography>

@@ -1,16 +1,26 @@
 import { FC } from 'react';
-import { CurrencyItem } from './CurrencyItem';
 import { Stack } from '@mui/material';
+import { Skeletons } from './ui';
+import { CurrencyItem } from './CurrencyItem';
 
 type ConverterProps = {
-  loading?: boolean;
+  isLoading?: boolean;
 };
 
-export const Converter: FC<ConverterProps> = () => {
+export const Converter: FC<ConverterProps> = ({ isLoading }) => {
   return (
     <Stack spacing={2}>
-      <CurrencyItem />
-      <CurrencyItem />
+      {isLoading ? (
+        <>
+          <Skeletons />
+          <Skeletons />
+        </>
+      ) : (
+        <>
+          <CurrencyItem />
+          <CurrencyItem />
+        </>
+      )}
     </Stack>
   );
 };
