@@ -1,8 +1,9 @@
 import { FC } from 'react';
 import { MenuItem, Select as MuiSelect, SelectProps } from '@mui/material';
+import { CurrencyUnion } from '../../models';
 
 type Props = SelectProps & {
-  items: string[];
+  items: readonly CurrencyUnion[];
 };
 
 export const Select: FC<Props> = ({ items, ...props }) => {

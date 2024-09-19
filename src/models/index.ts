@@ -7,7 +7,7 @@ export const currencies = [
   'JPY',
   'CNY',
   'PLN',
-];
+] as const;
 
 export type CurrencyUnion = (typeof currencies)[number];
 
