@@ -1,8 +1,10 @@
 import { AppBar, Container, Stack, Toolbar, Typography } from '@mui/material';
 import { FC } from 'react';
+import { RatesMap } from '../models';
 
 type HeaderProps = {
-  isLoading?: boolean;
+  isLoading: boolean;
+  ratesMap: RatesMap | null;
 };
 
 export const Header: FC<HeaderProps> = () => {

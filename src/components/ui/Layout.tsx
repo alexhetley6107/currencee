@@ -1,7 +1,7 @@
 import { Container, Stack } from '@mui/material';
 import { FC, PropsWithChildren } from 'react';
 
-export const MainContainer: FC<PropsWithChildren> = ({ children }) => {
+export const Layout: FC<PropsWithChildren> = ({ children }) => {
   return (
     <Container>
       <Stack
@@ -9,7 +9,9 @@ export const MainContainer: FC<PropsWithChildren> = ({ children }) => {
         justifyContent={'center'}
         sx={{ height: '100svh' }}
       >
-        <Stack spacing={2}>{children}</Stack>
+        <Stack direction="row" spacing={2}>
+          {children}
+        </Stack>
       </Stack>
     </Container>
   );

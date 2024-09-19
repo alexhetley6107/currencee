@@ -1,16 +1,14 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { RatesMap } from '../models';
 
 const api_key = import.meta.env.VITE_CURRENCY_API_KEY;
 const url = 'https://api.currencyfreaks.com/v2.0/rates/latest?apikey=';
 
 export const useGetRates = () => {
-  const [isLoading, setIsLoading] = useState(false);
+  const [isLoading, setIsLoading] = useState(true);
   const [ratesMap, setRatesMap] = useState<RatesMap | null>(null);
 
   const getRates = async () => {
-    setIsLoading(true);
-
     try {
       const rates = await fetch(`${url}${api_key}`)
         .then((res) => res.json())
@@ -24,6 +22,10 @@ export const useGetRates = () => {
       setIsLoading(false);
     }
   };
+
+  useEffect(() => {
+    getRates();
+  }, []);
 
   return { isLoading, getRates, ratesMap };
 };

@@ -1,4 +1,4 @@
 export { Input } from './Input';
 export { Select } from './Select';
-export { MainContainer } from './MainContainer';
+export { Layout } from './Layout';
 export { Skeletons } from './Skeletons';

@@ -4,7 +4,7 @@ import { SelectChangeEvent, Stack } from '@mui/material';
 import { Input, Select } from './ui';
 
 type ConverterProps = {
-  ratesMap?: RatesMap;
+  ratesMap?: RatesMap | null;
 };
 
 export const Converter: FC<ConverterProps> = () => {
