@@ -1,20 +1,22 @@
 import { FC } from 'react';
-import { MenuItem, Select as MuiSelect } from '@mui/material';
+import { MenuItem, Select as MuiSelect, SelectProps } from '@mui/material';
 
-type SelectProps = {
-  items?: string[];
+type Props = SelectProps & {
+  items: string[];
 };
 
-export const Select: FC<SelectProps> = () => {
+export const Select: FC<Props> = ({ items, ...props }) => {
   return (
     <MuiSelect
-      value="USD"
-      placeholder="Currency"
+      {...props}
       color="secondary"
-      sx={{ fontSize: 28, borderRadius: 3 }}
+      sx={{ width: '110px', fontSize: 28, borderRadius: 3 }}
     >
-      <MenuItem value="USD">USD</MenuItem>
-      <MenuItem value="EUR">EUR</MenuItem>
+      {items.map((value) => (
+        <MenuItem key={value} value={value}>
+          {value}
+        </MenuItem>
+      ))}
     </MuiSelect>
   );
 };

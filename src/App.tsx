@@ -1,13 +1,13 @@
 import { CssBaseline } from '@mui/material';
-import { Converter, Header, MainContainer } from './components';
+import { Converter, Header, MainContainer, Skeletons } from './components';
 import { useEffect } from 'react';
-import { useGetCurrencies } from './hooks';
+import { useGetRates } from './hooks';
 
 function App() {
-  const { isLoading, getCurrencies } = useGetCurrencies();
+  const { isLoading, getRates } = useGetRates();
 
   useEffect(() => {
-    getCurrencies();
+    getRates();
     console.log({ isLoading });
   }, []);
 
@@ -15,9 +15,7 @@ function App() {
     <>
       <CssBaseline />
       <Header />
-      <MainContainer>
-        <Converter isLoading={isLoading} />
-      </MainContainer>
+      <MainContainer>{isLoading ? <Skeletons /> : <Converter />}</MainContainer>
     </>
   );
 }

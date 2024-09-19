@@ -1,17 +1,14 @@
 import { FC } from 'react';
-import { TextField } from '@mui/material';
+import { TextField, TextFieldProps } from '@mui/material';
 
-type InputProps = {
-  value?: string;
-};
-
-export const Input: FC<InputProps> = ({ value }) => {
+export const Input: FC<TextFieldProps> = (props) => {
   return (
     <TextField
-      value={value}
+      {...props}
       type="number"
+      placeholder="Input number..."
       color="secondary"
-      sx={{ width: '200px' }}
+      sx={{ width: '240px' }}
       slotProps={{
         input: {
           sx: { fontSize: 28, borderRadius: 3 },
