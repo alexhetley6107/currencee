@@ -9,7 +9,12 @@ export const Layout: FC<PropsWithChildren> = ({ children }) => {
         justifyContent={'center'}
         sx={{ height: '100svh' }}
       >
-        <Stack direction="row" spacing={2} flexWrap={'wrap'}>
+        <Stack
+          direction="row"
+          flexWrap={'wrap'}
+          alignItems={'center'}
+          justifyContent={'center'}
+        >
           {children}
         </Stack>
       </Stack>

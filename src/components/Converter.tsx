@@ -2,32 +2,35 @@ import { FC, useState } from 'react';
 import { ConverterData, currencies, RatesMap } from '../models';
 import { SelectChangeEvent, Stack } from '@mui/material';
 import { Input, Select } from './ui';
+import { getConvertedData } from '../utils';
 
 type ConverterProps = {
-  ratesMap?: RatesMap | null;
+  ratesMap: RatesMap | null;
 };
 
-export const Converter: FC<ConverterProps> = () => {
+export const Converter: FC<ConverterProps> = ({ ratesMap }) => {
   const [data, setData] = useState<ConverterData>({
-    startAmount: 0,
+    startAmount: 1,
     startCurrency: 'USD',
-    endAmount: 0,
+    endAmount: 1,
     endCurrency: 'USD',
   });
 
   const onChangeCurrency = (e: SelectChangeEvent<unknown>) => {
     const { name, value } = e.target;
-    setData((prev) => ({ ...prev, [name]: value }));
+    setData((prev) =>
+      getConvertedData(ratesMap, name, value as keyof RatesMap, prev)
+    );
   };
 
   const onChangeAmount = (e: React.ChangeEvent<HTMLInputElement>) => {
     const { name, value } = e.target;
-    setData((prev) => ({ ...prev, [name]: Number(value) }));
+    setData((prev) => getConvertedData(ratesMap, name, Number(value), prev));
   };
 
   return (
     <>
-      <Stack direction="row" spacing={2}>
+      <Stack direction="row" spacing={2} sx={{ px: 1, pb: 2 }}>
         <Input
           name="startAmount"
           value={data.startAmount}
@@ -40,7 +43,7 @@ export const Converter: FC<ConverterProps> = () => {
           items={currencies}
         />
       </Stack>
-      <Stack direction="row" spacing={2}>
+      <Stack direction="row" spacing={2} sx={{ px: 1, pb: 2 }}>
         <Input
           name="endAmount"
           value={data.endAmount}
